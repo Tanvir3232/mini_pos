@@ -12,7 +12,8 @@
               <thead>
                 <tr>
                    
-                   <th>User</th>
+                   
+                   <th>Admin</th>
                    <th>Date</th>
                    <th>Total</th>
                    <th>Note</th>            
@@ -23,11 +24,11 @@
 
               <tfoot>
                   <tr>
-                     <th>User</th>
-                     <th>Date</th>
-                     <th>Total</th>
-                     <th>Note</th>  
-                     <th class="text-right">Actions</th>
+                    
+                  
+                     <th colspan="2" class="text-right">Total</th>
+                     <th>{{ $user->receipts()->sum('amount')}}</th>
+                     <th colspan="2"></th>
                                             
                   </tr>
               </tfoot>
@@ -38,15 +39,15 @@
                   <tr>
                                
                      
-                     <td>{{$user->name}}</td>
+                     
+                     <td>{{ optional($receipt->admin)->name }}</td>
                      <td>{{$receipt->date}}</td>
                      <td> {{$receipt->amount}} </td>
                      <td> {{$receipt->note}} </td>
                      <td class="text-right" width="150px">
-                         <form method="post" action="{{ route('users.destroy',['user'=>$user->id]) }}">
+                         <form method="post" action="{{  route('user.receipts.destroy',['id'=>$user->id,'receipt_id'=>$receipt->id]) }}">
 
-                             <a href="{{ route('users.show',['user' => $user->id]) }}" class="btn btn-dark"><i class="fa fa-eye"></i>
-                                                   </a>
+                             
 
                                     
                                       
@@ -65,5 +66,6 @@
      </div>
              <!-- End Card -->
      
+
 
 @stop

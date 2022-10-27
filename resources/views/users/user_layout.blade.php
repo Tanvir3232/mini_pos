@@ -14,7 +14,9 @@
                <i class="fa fa-plus"></i> New Payment
             </button>
 
-            <a class="btn btn-info " href="{{url('users/create')}}"> <i class="fa fa-plus"></i> New Receipt</a>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newReceipt">
+               <i class="fa fa-plus"></i> New Receipt
+            </button>
     	</div>
     </div> 
 
@@ -34,7 +36,118 @@
           @yield('user_content')
       </div>
     </div>
+    
+<!-- Modal for Receipt -->
+<div class="modal fade" id="newReceipt" tabindex="-1" aria-labelledby="#newReceiptLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    {!! Form::open(['route' => ['user.receipts.store', $user->id],'method'=>'post']) !!}
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newReceiptLabel">New Receipt</h5>
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+         <!--form start --->
+          <div class="mb-3  form-group row">
+            <label for="date" class="col-sm-3 col-form-label">Date<span class="text-danger">*</span></label>
+            <div class="col-sm-9">
+              <!-- <input type="text" date="date" id='date' class="form-control" placeholder="user date"> -->
+              {{Form::date('date',NULL,['class'=>'form-control','required', 'id' => 'date', 'placeholder'=>'user date'])}}
+            </div>
+          </div>
 
+          <div class="mb-3  form-group row">
+            <label for="amount" class="col-sm-3 col-form-label">Amount<span class="text-danger">*</span></label>
+            <div class="col-sm-9">
+              {{Form::text('amount',NULL,['class'=>'form-control','required', 'id' => 'amount', 'placeholder'=>'Amount'])}}
+            </div>
+          </div>
+
+           <div class="mb-3  form-group row">
+            <label for="note" class="col-sm-3 col-form-label">Note</label>
+            <div class="col-sm-9">
+              {{Form::textarea('note',null,['class'=>'form-control',  'id' => 'note','rows'=>'3', 'placeholder'=>'Receipt note'])}}
+            </div>
+          </div>
+          
+ 
+          
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary ">Submit</button>
+      </div>
+    </div>
+      {!! Form::close() !!}
+  </div>
+
+</div>
+
+<!-- End Receipt modal-->
+  
+   <!-- Modal for add new payment  -->
+  
+  <!-- Button trigger modal -->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="newPayment" tabindex="-1" aria-labelledby="#newPaymentLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    {!! Form::open(['route' => ['user.payments.store', $user->id],'method'=>'post']) !!}
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newPaymentLabel">New Payment</h5>
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+         <!--form start --->
+          <div class="mb-3  form-group row">
+            <label for="date" class="col-sm-3 col-form-label">Date<span class="text-danger">*</span></label>
+            <div class="col-sm-9">
+              <!-- <input type="text" date="date" id='date' class="form-control" placeholder="user date"> -->
+              {{Form::date('date',NULL,['class'=>'form-control','required', 'id' => 'date', 'placeholder'=>'user date'])}}
+            </div>
+          </div>
+
+          <div class="mb-3  form-group row">
+            <label for="amount" class="col-sm-3 col-form-label">Amount<span class="text-danger">*</span></label>
+            <div class="col-sm-9">
+              {{Form::text('amount',NULL,['class'=>'form-control','required', 'id' => 'amount', 'placeholder'=>'Amount'])}}
+            </div>
+          </div>
+
+           <div class="mb-3  form-group row">
+            <label for="note" class="col-sm-3 col-form-label">Note</label>
+            <div class="col-sm-9">
+              {{Form::textarea('note',null,['class'=>'form-control',  'id' => 'note','rows'=>'3', 'placeholder'=>'payment note'])}}
+            </div>
+          </div>
+          
+ 
+          
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary ">Submit</button>
+      </div>
+    </div>
+      {!! Form::close() !!}
+  </div>
+
+</div>
+
+<!-- end payment modal-->
 
      <!-- DataTales Example -->
    

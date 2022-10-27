@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 class UserPaymentsController extends Controller
 {
     public function __construct()
@@ -24,7 +25,7 @@ class UserPaymentsController extends Controller
     {
          $formData =  $request->all();
          $formData['user_id'] = $user_id;
-         
+         $formData['admin_id'] = Auth::id();
         if(Payment::create($formData)){
             Session::flash('message','Payment Added successfully.');//ei message ta layout/main.blade.php file ekta section create kora ase alert msg dekhar jonno
         }
