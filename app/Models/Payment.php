@@ -9,7 +9,7 @@ class Payment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date','amount','note','user_id','admin_id'];
+    protected $fillable = ['date','purchase_invoice_id','amount','note','user_id','admin_id'];
 
     public function admin()
     {
