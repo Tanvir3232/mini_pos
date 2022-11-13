@@ -24,6 +24,7 @@
                                             <th>Title</th>
                                             <th>Cost price</th>
                                             <th>Sale price</th>
+                                            <th>Has Stock</th>
                                             <th class="text-right">Actions</th>
                                             
                                         </tr>
@@ -35,6 +36,7 @@
                                             <th>Title</th>
                                             <th>Cost price</th>
                                             <th>Sale price</th>
+                                            <th>Has Stock</th>
                                             <th class="text-right">Actions</th>
                                             
                                         </tr>
@@ -45,11 +47,11 @@
                                     	
                                         <tr>
                                             <td>{{$product->id}}</td>
-                                            <td> {{$product->category->title}} </td>
-                                            <td>{{$product->title}}</td>
-                                            <td>{{$product->cost_price}}</td>
-                                            <td>{{$product->price}}</td>
-                                            
+                                            <td> {{ $product->category->title}} </td>
+                                            <td> {{ $product->title}}</td>
+                                            <td> {{ $product->cost_price}}</td>
+                                            <td> {{ $product->price}}</td>
+                                            <td> {{ ($product->has_stock == 1)? 'Yes':'No'}}</td>
                                             <td class="text-right" width="150px">
                                                 <form method="post" action="{{ route('products.destroy',['product'=>$product->id]) }}">
 

@@ -8,6 +8,11 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Session;
 class ProductsController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Products';
+        $this->data['sub_menu']  = 'Products';
+    }
     /**
      * Display a listing of the resource.
      *
@@ -93,7 +98,7 @@ class ProductsController extends Controller
         $product->description    = $data['description'];
         $product->cost_price     = $data['cost_price'];
         $product->price          = $data['price'];
-        
+        $product->has_stock      = $data['has_stock'];
 
         if($product->save()){
             Session::flash('message','Product information updated successfully.');//ei message ta layout/main.blade.php file ekta section create kora ase alert msg dekhar jonno

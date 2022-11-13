@@ -7,6 +7,11 @@ use App\Models\Group;
 use Illuminate\Support\Facades\Session;
 class UserGroupsController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Users';
+        $this->data['sub_menu']  = 'Groups';
+    }
     public function index()
     {
     	$this->data['groups'] = Group::all();
@@ -15,7 +20,7 @@ class UserGroupsController extends Controller
     public function create()
     {
     	
-    	return view('groups.create');
+    	return view('groups.create',$this->data); // এখানে Data পাঠানো হয়েছে , কারণ Constructor এর  value পাবার জন্য। 
     }
     public function store(Request $request)
     {

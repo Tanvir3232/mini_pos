@@ -11,7 +11,7 @@ class PurchaseItem extends Model
     protected $fillable = ['product_id','purchase_invoice_id','price','quantity','total'];
     public function invoice()
     {
-    	return $this->belongsTo(PurchaseInvoice::class);
+    	return $this->belongsTo(PurchaseInvoice::class,'purchase_invoice_id','id');
     }
     public function product()
     {

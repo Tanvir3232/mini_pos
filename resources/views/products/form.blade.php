@@ -57,13 +57,20 @@
 				    </div>
 				  </div>
 
+
 				  <div class="mb-3  form-group row">
 				    <label for="price" class="col-sm-2 col-form-label">Sale Price</label>
 				    <div class="col-sm-10">
 				    	{{Form::text('price',NULL,['class'=>'form-control', 'id' => 'price', 'placeholder'=>'Product price'])}}
 				    </div>
 				  </div>
-				  
+
+				  <div class="mb-3  form-group row">
+				    <label for="stock" class="col-sm-2 col-form-label">Has Stock</label>
+				    <div class="col-sm-2">
+				    	{{Form::select('has_stock',['1' => 'Yes', '0' => 'No'],1,['class'=>'form-control', 'id' => 'has_stock'])}}
+				    </div>
+				  </div>
 				  <div class="text-right">
 				  	  <button type="submit" class="btn btn-primary ">Submit</button>
 				  </div>

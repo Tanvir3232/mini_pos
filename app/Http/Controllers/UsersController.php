@@ -9,6 +9,10 @@ use App\Models\Group;
 use Illuminate\Support\Facades\Session;
 class UsersController extends Controller
 {
+     public function __construct()
+    {
+        parent::__construct();
+    }
     /**
      * Display a listing of the resource.
      *

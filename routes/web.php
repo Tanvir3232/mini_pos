@@ -12,7 +12,13 @@ use App\Http\Controllers\UserPurchasesController;
 use App\Http\Controllers\UserPaymentsController;
 use App\Http\Controllers\UserReceiptsController;
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductsStockController;
+use App\Http\Controllers\Reports\SaleReportController;
+use App\Http\Controllers\Reports\PurchaseReportController;
+use App\Http\Controllers\Reports\PaymentReportController;
+use App\Http\Controllers\Reports\ReceiptReportController;
+use App\Http\Controllers\Reports\DayReportsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,10 +31,9 @@ use App\Http\Controllers\ProductsStockController;
 */
 
 Route::group(['middleware' => 'auth'], function(){
-	Route::get('/dashboard', function () {
+	Route::get('/',[DashboardController::class,'index'])->name('dashboard');
 
-      return view('welcome');
-    });
+	Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
     
    
     Route::get('logout',[LoginController::class,'logout'])->name('logout');
@@ -103,6 +108,16 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 	Route::get('/stocks',[ ProductsStockController::class,'index'])->name('stocks');
+
+	//for reports
+	Route::get('/reports/sales',[ SaleReportController::class,'index'])->name('reports.sales');
+	Route::get('/reports/purchases',[ PurchaseReportController::class,'index'])->name('reports.purchases');
+
+	Route::get('/reports/payments',[ PaymentReportController::class,'index'])->name('reports.payments');
+
+	Route::get('/reports/days',[ DayReportsController::class,'index'])->name('reports.days');
+
+	Route::get('/reports/receipts',[ ReceiptReportController::class,'index'])->name('reports.receipts');
 });
 
  Route::get('login',[LoginController::class,'login'])->name('login');

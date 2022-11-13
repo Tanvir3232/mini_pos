@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Requests\CategoryRequest;
 class CategoriesController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Products';
+        $this->data['sub_menu']  = 'Categories';
+    }
     /**
      * Display a listing of the resource.
      *
