@@ -19,6 +19,8 @@ use App\Http\Controllers\Reports\PurchaseReportController;
 use App\Http\Controllers\Reports\PaymentReportController;
 use App\Http\Controllers\Reports\ReceiptReportController;
 use App\Http\Controllers\Reports\DayReportsController;
+
+use App\Http\Controllers\UserReportsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -99,7 +101,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('users/{id}/receipts/{invoice_id?}',   [UserReceiptsController::class,'store'])->name('user.receipts.store');
     Route::delete('users/{id}/receipts/{receipt_id}', [UserReceiptsController::class,'destroy'])->name('user.receipts.destroy');
 
-
+    Route::get('users/{id}/reports', [UserReportsController::class,'reports'])->name('users.reports');
 
 
 	Route::resource('/categories', CategoriesController::class, ['except' => ['show']] );

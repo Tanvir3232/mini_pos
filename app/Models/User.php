@@ -20,10 +20,26 @@ class User extends Model
     	return $this->hasMany(SaleInvoice::class);
     }
 
+
+    public function saleItems()
+    {
+        return $this->hasManyThrough(SaleItem::class, SaleInvoice::class);
+    }
+
+
+
     public function purchases()
     {
         return $this->hasMany(PurchaseInvoice::class);
     }
+
+
+    public function purchaseItems()
+    {
+        return $this->hasManyThrough(PurchaseItem::class, PurchaseInvoice::class);
+    }
+
+
 
     public function payments()
     {
